@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prisforslag — Ny nettside for Ordbruket</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1a1a1a;
+      background: #fff;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+
+    /* Header */
+    .doc-header {
+      text-align: center;
+      margin-bottom: 50px;
+      padding-bottom: 40px;
+      border-bottom: 2px solid #1B4DA0;
+    }
+
+    .doc-header h1 {
+      font-family: 'Merriweather', serif;
+      font-size: 28px;
+      color: #1B4DA0;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .doc-meta {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .doc-meta span { display: inline-block; }
+    .doc-meta strong { color: #1a1a1a; }
+
+    /* Sections */
+    h2 {
+      font-family: 'Merriweather', serif;
+      font-size: 20px;
+      color: #1B4DA0;
+      margin: 45px 0 18px 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    h3 {
+      font-size: 17px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin: 30px 0 12px 0;
+    }
+
+    p { margin-bottom: 12px; }
+
+    ul, ol {
+      margin: 10px 0 18px 24px;
+    }
+
+    li { margin-bottom: 6px; }
+    li strong { color: #1a1a1a; }
+
+    /* Highlight boxes */
+    .info-box {
+      background: #f0f5fb;
+      border-left: 4px solid #1B4DA0;
+      padding: 16px 20px;
+      margin: 16px 0;
+      border-radius: 0 6px 6px 0;
+      font-size: 14px;
+    }
+
+    .info-box.green {
+      background: #f0f9f0;
+      border-left-color: #2e8b57;
+    }
+
+    .info-box.amber {
+      background: #fef9ee;
+      border-left-color: #c0956c;
+    }
+
+    /* Package cards */
+    .package {
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 28px;
+      margin: 24px 0;
+      page-break-inside: avoid;
+    }
+
+    .package.recommended {
+      border-color: #1B4DA0;
+      box-shadow: 0 2px 12px rgba(27, 77, 160, 0.12);
+      position: relative;
+    }
+
+    .package.recommended::before {
+      content: 'Anbefalt';
+      position: absolute;
+      top: -12px;
+      left: 24px;
+      background: #1B4DA0;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .package h3 {
+      margin-top: 0;
+      font-size: 19px;
+      color: #1B4DA0;
+    }
+
+    .package .subtitle {
+      color: #666;
+      font-size: 14px;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    .package ul {
+      margin-left: 20px;
+    }
+
+    .price-box {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 18px;
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .price-original {
+      color: #999;
+      text-decoration: line-through;
+      font-size: 16px;
+    }
+
+    .price-current {
+      font-size: 26px;
+      font-weight: 700;
+      color: #1B4DA0;
+    }
+
+    .price-savings {
+      background: #e8f5e9;
+      color: #2e7d32;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    /* Comparison table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    th {
+      background: #1B4DA0;
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #eee;
+    }
+
+    tr:nth-child(even) td { background: #f9fafb; }
+
+    .check { color: #2e8b57; font-weight: 600; }
+    .cross { color: #c0392b; }
+
+    /* Recommendation */
+    .recommendation {
+      background: linear-gradient(135deg, #f0f5fb 0%, #e8eef8 100%);
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin: 24px 0;
+    }
+
+    .recommendation strong { color: #1B4DA0; }
+
+    /* Checklist */
+    .checklist {
+      list-style: none;
+      margin-left: 0;
+      padding: 0;
+    }
+
+    .checklist li {
+      padding: 8px 0 8px 30px;
+      position: relative;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .checklist li::before {
+      content: '☐';
+      position: absolute;
+      left: 4px;
+      color: #1B4DA0;
+      font-size: 16px;
+    }
+
+    /* Footer */
+    .doc-footer {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
+      font-size: 13px;
+      color: #777;
+    }
+
+    /* Print styles */
+    @media print {
+      body { font-size: 13px; }
+      .page { padding: 0; max-width: 100%; }
+      .package { break-inside: avoid; }
+      .doc-header { margin-bottom: 30px; padding-bottom: 20px; }
+      h2 { margin-top: 30px; }
+    }
+
+    @page {
+      margin: 2cm;
+      size: A4;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="doc-header">
+      <h1>Prisforslag: Ny nettside for Ordbruket</h1>
+      <div class="doc-meta">
+        <span><strong>Til:</strong> Kati Foss Indrefjord</span>
+        <span><strong>Fra:</strong> Kjersti Valland</span>
+        <span><strong>Dato:</strong> 2. mars 2026</span>
+      </div>
+    </div>
+
+    <!-- BAKGRUNN -->
+    <h2>Bakgrunn</h2>
+    <p>Du har i dag en fin nettside på Squarespace (ordbruket.org) som fungerer godt. Samtidig ser jeg noen muligheter til å gjøre den enda bedre — spesielt når det gjelder hvor enkelt det er å oppdatere innhold, og hvor godt du synes på Google og sosiale medier.</p>
+    <p>Jeg har derfor bygget et forslag til en ny nettside som du allerede kan kikke på: <strong>ordbruket.netlify.app</strong></p>
+
+    <!-- GJENNOMGANG -->
+    <h2>Gjennomgang av dagens side</h2>
+    <p>Jeg har sett på den nåværende siden din og har noen tanker:</p>
+
+    <h3>Det som fungerer bra i dag</h3>
+    <ul>
+      <li>Sidene er på plass (Hjem, Språktjenester, Portfolio, Referanser, Om, Kontakt)</li>
+      <li>Profilbilde og LinkedIn-lenke</li>
+      <li>Kontaktskjema og referanser</li>
+      <li>Siden tilpasser seg mobil og nettbrett</li>
+    </ul>
+
+    <h3>Muligheter for forbedring</h3>
+    <ul>
+      <li><strong>Bedre deling på LinkedIn</strong> — i dag vises lenker fra siden uten bilde og beskrivelse. Med en liten forbedring kan delinger se mye mer innbydende ut og gi flere klikk.</li>
+      <li><strong>Mer synlig på Google</strong> — med noen justeringer kan Google lettere forstå hva du tilbyr, slik at flere finner deg</li>
+      <li><strong>Personvernerklæring</strong> — siden kontaktskjemaet samler e-postadresser, er det lurt å ha en personvernerklæring på plass (dette er også et lovkrav via GDPR)</li>
+      <li><strong>Besøksstatistikk</strong> — med statistikk kan du se hvem som besøker siden og hvor de kommer fra — nyttig for å vite hva som fungerer</li>
+      <li><strong>Enklere oppdatering</strong> — i dag kan det oppleves litt tungvint å legge inn nytt innhold. Et enklere system gjør det raskere å holde siden oppdatert</li>
+      <li><strong>Lavere kostnader</strong> — i dag betaler du abonnement til Squarespace. Det finnes løsninger som gir deg mer, til en lavere pris</li>
+    </ul>
+
+    <!-- ALLEREDE FERDIG -->
+    <h2>Hva jeg har laget til deg</h2>
+    <p>Jeg har laget et utkast til en ny nettside som allerede inneholder:</p>
+    <ul>
+      <li><strong>7 sider</strong> — Hjem, Språktjenester, Portfolio, Aktuelt, Referanser, Om og Kontakt</li>
+      <li><strong>Aktuelt-seksjon</strong> (nytt!) — en plass der du enkelt kan legge ut korte oppdateringer, nye oppdrag, eller dele artikler</li>
+      <li><strong>Enkelt redigeringssystem</strong> — du logger inn og redigerer innhold direkte, uten å trenge teknisk hjelp</li>
+      <li><strong>Kontaktskjema</strong> som sender meldinger rett til deg</li>
+      <li><strong>Fungerer på alle enheter</strong> — mobil, nettbrett og PC</li>
+      <li><strong>4 arbeidsprøver</strong> og <strong>4 referanser</strong> lagt inn</li>
+      <li><strong>Beskrivelser for Google</strong> på alle sider (mangler på dagens side)</li>
+      <li><strong>Gratis hosting</strong> — ingen månedlig kostnad</li>
+    </ul>
+
+    <!-- HVA GJENSTÅR -->
+    <h2>Veien videre</h2>
+    <p>For at den nye siden skal være helt klar til bruk, gjenstår noen ting jeg gjerne hjelper deg med:</p>
+
+    <div class="info-box">
+      <strong>Må på plass:</strong>
+      <ol>
+        <li>Sette opp innlogging så du kan redigere innhold selv</li>
+        <li>Personvernerklæring (lovpålagt)</li>
+        <li>Flytte domenet ordbruket.org over til den nye siden</li>
+        <li>Legge inn bilder (profilbilde + bilder til arbeidsprøver)</li>
+      </ol>
+    </div>
+
+    <div class="info-box amber">
+      <strong>Bør på plass for synlighet:</strong>
+      <ol start="5">
+        <li>Sørge for at deling på LinkedIn/Facebook viser bilde og beskrivelse</li>
+        <li>Gjøre det enklere for Google å finne og forstå siden</li>
+        <li>Legge til LinkedIn-lenke (som du har i dag)</li>
+      </ol>
+    </div>
+
+    <div class="info-box green">
+      <strong>Ekstra for en komplett løsning:</strong>
+      <ol start="8">
+        <li>Besøksstatistikk — se hvor mange som besøker siden</li>
+        <li>Mulighet for lesere å abonnere på oppdateringer</li>
+        <li>Kvalitetssikring på tvers av nettlesere</li>
+      </ol>
+    </div>
+
+    <!-- PAKKER -->
+    <h2>Pakker og priser</h2>
+
+    <div class="package">
+      <h3>Pakke 1: Lanseringsklar</h3>
+      <p class="subtitle">Alt du trenger for å gå live med ordbruket.org</p>
+      <ul>
+        <li>Innlogging til redigeringssystemet satt opp og testet</li>
+        <li><strong>Personlig opplæring</strong> (ca. 2 timer) i hvordan du legger inn og redigerer innhold</li>
+        <li><strong>Brukerveiledning</strong> du kan slå opp i etterpå</li>
+        <li>Personvernerklæring-side</li>
+        <li>Domenet ordbruket.org flyttes over til den nye siden</li>
+        <li>Feilside med Ordbruket-design (i stedet for en generisk feilmelding)</li>
+        <li>LinkedIn-lenke i toppen (som på nåværende side)</li>
+        <li>Beskyttelse mot spam i kontaktskjemaet</li>
+        <li>Hjelp med å legge inn bilder</li>
+        <li><strong>Én runde med tilbakemeldinger og justeringer</strong> inkludert</li>
+      </ul>
+      <div class="price-box">
+        <span class="price-original">15 000 kr</span>
+        <span class="price-current">10 900 kr</span>
+        <span class="price-savings">Du sparer 4 100 kr (27 %)</span>
+      </div>
+    </div>
+
+    <div class="package recommended">
+      <h3>Pakke 2: Lanseringsklar + synlighet</h3>
+      <p class="subtitle">Pakke 1 + sørger for at du synes godt på Google og sosiale medier</p>
+      <p><strong>Alt i Pakke 1, pluss:</strong></p>
+      <ul>
+        <li><strong>Deling som ser bra ut</strong> — når du deler en lenke fra siden på LinkedIn eller Facebook, vises det automatisk med bilde, tittel og beskrivelse</li>
+        <li>Google får rik informasjon om deg og tjenestene dine (bedre søkeresultater)</li>
+        <li>Bildene på siden lastes raskere og tilpasser seg skjermstørrelse</li>
+        <li>Utvidet bunntekst med kontaktinfo og lenker</li>
+        <li>Forbedret tilgjengelighet for alle brukere</li>
+      </ul>
+      <div class="info-box">
+        <strong>Hvorfor jeg anbefaler dette for deg:</strong> Du lever av ord og kommunikasjon, og LinkedIn er en viktig kanal for deg. I dag vises lenker fra siden din som en kjedelig tekstlenke uten bilde. Med denne pakken får du automatisk en pen forhåndsvisning hver gang du deler noe — det gir vesentlig mer synlighet og klikk.
+      </div>
+      <div class="price-box">
+        <span class="price-original">20 000 kr</span>
+        <span class="price-current">14 900 kr</span>
+        <span class="price-savings">Du sparer 5 100 kr (25 %)</span>
+      </div>
+    </div>
+
+    <div class="package">
+      <h3>Pakke 3: Komplett</h3>
+      <p class="subtitle">Pakke 2 + besøksstatistikk og full kvalitetssikring</p>
+      <p><strong>Alt i Pakke 2, pluss:</strong></p>
+      <ul>
+        <li><strong>Besøksstatistikk</strong> — se hvor mange som besøker siden, hvilke sider de leser, og hvor de kommer fra (personvernvennlig løsning uten informasjonskapsler)</li>
+        <li>Mulighet for lesere å abonnere på aktuelt-oppdateringer</li>
+        <li>Kvalitetssikring på tvers av nettlesere (Chrome, Safari, Firefox, mobil)</li>
+        <li>Ytelsesoptimalisering (raskere lasting)</li>
+      </ul>
+      <div class="price-box">
+        <span class="price-original">25 000 kr</span>
+        <span class="price-current">18 900 kr</span>
+        <span class="price-savings">Du sparer 6 100 kr (24 %)</span>
+      </div>
+    </div>
+
+    <div class="package">
+      <h3>Tillegg: Vedlikeholdsavtale</h3>
+      <p class="subtitle">Løpende støtte så du slipper å tenke på det tekniske</p>
+      <ul>
+        <li>Jeg holder siden oppdatert og sikker</li>
+        <li>Hjelp hvis du står fast med redigeringssystemet</li>
+        <li>Rask respons hvis noe ikke fungerer</li>
+        <li>Enkel besøksrapport (hvis statistikk er satt opp)</li>
+      </ul>
+      <div class="price-box">
+        <span class="price-current">590 kr/mnd</span>
+      </div>
+      <p style="font-size: 13px; color: #666; margin-top: 10px;">Til sammenligning betaler du i dag ca. 170 kr/mnd for Squarespace. Med den nye siden er selve hostingen gratis — vedlikeholdsavtalen gir deg personlig støtte i tillegg.</p>
+    </div>
+
+    <!-- SAMMENLIGNING -->
+    <h2>Sammenligning</h2>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>I dag (Squarespace)</th>
+          <th>Ny side (Pakke 2)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Månedlig kostnad</strong></td><td>~170 kr/mnd</td><td class="check">Gratis hosting</td></tr>
+        <tr><td><strong>Redigere innhold</strong></td><td>Via Squarespace</td><td class="check">Enkelt og raskt</td></tr>
+        <tr><td><strong>Aktuelt / nyheter</strong></td><td>Ikke tilgjengelig</td><td class="check">Inkludert</td></tr>
+        <tr><td><strong>Synlighet på Google</strong></td><td>Grunnleggende</td><td class="check">Optimalisert</td></tr>
+        <tr><td><strong>Deling på LinkedIn</strong></td><td>Kun tekstlenke</td><td class="check">Med bilde og beskrivelse</td></tr>
+        <tr><td><strong>Personvernerklæring</strong></td><td>Ikke på plass</td><td class="check">Inkludert</td></tr>
+        <tr><td><strong>Hastighet</strong></td><td>God</td><td class="check">Svært rask</td></tr>
+        <tr><td><strong>Du eier innholdet</strong></td><td>Leier plattform</td><td class="check">Full eierskap</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ANBEFALING -->
+    <h2>Min anbefaling</h2>
+    <div class="recommendation">
+      <p>Jeg tror <strong>Pakke 2 (Lanseringsklar + synlighet)</strong> gir deg mest igjen for pengene. Du får en ferdig side som er klar til bruk, pluss at du synes godt på Google og LinkedIn — noe som er ekstra verdifullt for en som jobber med kommunikasjon.</p>
+      <p style="margin-top: 10px;">Pakke 3 kan være aktuell hvis du ønsker full oversikt over besøkstall, men dette kan også legges til senere om du ønsker det.</p>
+    </div>
+
+    <!-- HVA JEG TRENGER -->
+    <h2>Hva jeg trenger fra deg</h2>
+    <ul class="checklist">
+      <li><strong>Profilbilde</strong> (du har ett på Squarespace jeg kan bruke)</li>
+      <li><strong>Bilder til arbeidsprøvene</strong> (4 stk)</li>
+      <li><strong>Eventuelle bilder til aktuelt-innlegg</strong></li>
+      <li><strong>Tilgang til domeneregistrar</strong> (for å flytte ordbruket.org)</li>
+      <li><strong>Bekreftelse av LinkedIn-URL</strong></li>
+    </ul>
+
+    <!-- HOSTING -->
+    <h2>Om hosting og kostnader</h2>
+    <p>Den nye siden bruker <strong>Netlify</strong> som vertskap (hosting). Netlify er en anerkjent og velprøvd tjeneste som brukes av millioner av nettsider verden over.</p>
+
+    <div class="info-box green">
+      <strong>Netlify er gratis for din type side.</strong> Gratisversjonen inkluderer:
+      <ul style="margin-top: 8px;">
+        <li><strong>100 GB datatrafikk i måneden</strong> — mer enn nok for en side som ordbruket.org (en typisk liten nettside bruker under 1 GB/mnd)</li>
+        <li><strong>100 kontaktskjema-innsendinger i måneden</strong> — meldinger fra kontaktskjemaet ditt</li>
+        <li><strong>Innlogging for redigering</strong> — du logger inn med e-post for å redigere innhold</li>
+        <li><strong>HTTPS-sikkerhet</strong> — automatisk sikker tilkobling (hengelåsen i nettleseren)</li>
+      </ul>
+    </div>
+
+    <p>Det betyr at du <strong>ikke betaler noe for hosting</strong>. Til sammenligning koster Squarespace i dag ca. 170 kr/mnd (ca. 2 000 kr/år). Over tre år sparer du altså rundt <strong>6 000 kr</strong> bare på hosting.</p>
+
+    <p>Hvis siden din mot formodning skulle vokse stort (f.eks. over 100 000 besøk i måneden), finnes det oppgraderingsmuligheter — men det er svært usannsynlig for en side som denne, og du vil bli varslet i god tid.</p>
+
+    <!-- PRAKTISK -->
+    <div class="doc-footer">
+      <h2 style="border: none; margin-top: 0; padding: 0; font-size: 16px;">Praktisk informasjon</h2>
+      <ul>
+        <li>Alle priser er eks. mva. (25 %)</li>
+        <li>Besøksstatistikk (Pakke 3) har en liten tilleggskostnad på ca. 100 kr/mnd</li>
+        <li>Flytting av domenet tar normalt 1–2 arbeidsdager</li>
+        <li>Squarespace-abonnementet kan sies opp etter vellykket flytting</li>
+      </ul>
+    </div>
+
+  </div>
+</body>
+</html>
