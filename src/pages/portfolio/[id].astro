@@ -33,7 +33,7 @@ const { Content } = await render(item);
   <section class="section">
     <div class="container prose">
       {item.data.image && (
-        <img src={item.data.image} alt={item.data.title} style="border-radius: 8px; margin-bottom: 2rem;" />
+        <img src={item.data.image} alt={item.data.title} class="portfolio-hero-image" />
       )}
       <Content />
       {item.data.link && (
