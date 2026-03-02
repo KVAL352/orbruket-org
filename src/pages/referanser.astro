@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const testimonials = [
+  {
+    quote: 'Kati har hatt ansvar for fleire av våre kommunikasjonstiltak. Ho har stor faglegheit og eit engasjert blikk for strategisk kommunikasjon.',
+    author: 'Arne L. Lynngård',
+    role: 'Direktør, Kirkens Bymisjon Bergen',
+  },
+  {
+    quote: 'Kati har jobba hos oss som vikar og frilansar. Ho er ein dyktig skribent med positive eigenskapar som leverer kvalitetsartiklar.',
+    author: 'Ole Irgens',
+    role: 'Kommunikasjonssjef, Tryg',
+  },
+  {
+    quote: 'Gjennom ni år leverte Kati prikkfritt og levande nynorsk. Ho har ei eineståande evne til å lage engasjerande reportasjar frå landbruket.',
+    author: 'Gerd Lithun',
+    role: 'Tidlegare redaktør, Vestlandsk Landbruk',
+  },
+  {
+    quote: 'Kati skriv engasjerande og har stor fleirkulturell kompetanse. Ho er særleg sterk på mangfald og inkludering.',
+    author: 'Kristine Moskvil Thorsen',
+    role: 'Avdelingsleiar, Kirkens Bymisjon',
+  },
+];
+---
+
+<BaseLayout title="Referanser" description="Kva kundane seier om samarbeid med Ordbruket.">
+  <div class="page-header">
+    <div class="container">
+      <h1>Referanser</h1>
+      <p>Kva oppdragsgivarar seier om samarbeidet</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="testimonial-grid">
+        {testimonials.map((t) => (
+          <div class="testimonial">
+            <blockquote>&laquo;{t.quote}&raquo;</blockquote>
+            <div class="testimonial-author">{t.author}</div>
+            <div class="testimonial-role">{t.role}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

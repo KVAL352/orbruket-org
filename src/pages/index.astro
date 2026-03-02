@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const aktueltPosts = (await getCollection('aktuelt')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+).slice(0, 3);
+
+const portfolioItems = (await getCollection('portfolio')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+).slice(0, 3);
+---
+
+<BaseLayout title="Hjem">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Ordbruket</h1>
+      <p>
+        Profesjonelle språktjenester i Bergen. Tekstproduksjon, språkvask,
+        oversettelse og kommunikasjonsrådgivning.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="/spraaktjenester/" class="btn">Se tjenester</a>
+        <a href="/kontakt/" class="btn btn-outline">Ta kontakt</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services overview -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Hva kan eg hjelpe deg med?</h2>
+        <p>Over 30 års erfaring med tekst og kommunikasjon</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-item">
+          <div class="service-icon">&#9998;</div>
+          <h3>Tekstproduksjon</h3>
+          <p>Artiklar, reportasjar, intervju, kronikkar og anna tekstproduksjon tilpassa ditt behov.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">&#128269;</div>
+          <h3>Språkvask</h3>
+          <p>Grundig korrekturlesing og språkleg bearbeiding av tekstar på bokmål og nynorsk.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">&#127760;</div>
+          <h3>Oversettelse</h3>
+          <p>Profesjonell omsetting frå engelsk til norsk, tilpassa målgruppe og kanal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Activity -->
+  {aktueltPosts.length > 0 && (
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-title">
+          <h2>Aktuelt</h2>
+          <p>Siste nytt frå Ordbruket</p>
+        </div>
+        <div class="activity-feed">
+          {aktueltPosts.map((post) => (
+            <article class="activity-post">
+              <div class="activity-post-header">
+                <div class="activity-avatar">K</div>
+                <div class="activity-post-meta">
+                  <strong>Kati Foss Indrefjord</strong><br />
+                  {new Date(post.data.date).toLocaleDateString('nb-NO', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                  })}
+                </div>
+              </div>
+              <div class="activity-post-content">
+                <p><strong>{post.data.title}</strong></p>
+                {post.data.image && (
+                  <img src={post.data.image} alt={post.data.title} class="activity-post-image" />
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="/aktuelt/" class="btn btn-outline">Sjå alle innlegg</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Latest Portfolio -->
+  {portfolioItems.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Siste arbeid</h2>
+          <p>Eit utval av nyare oppdrag</p>
+        </div>
+        <div class="card-grid">
+          {portfolioItems.map((item) => (
+            <a href={`/portfolio/${item.id}/`} class="card" style="text-decoration: none; color: inherit;">
+              {item.data.image && (
+                <img src={item.data.image} alt={item.data.title} class="card-image" />
+              )}
+              <div class="card-body">
+                <div class="card-meta">
+                  {item.data.client && <span>{item.data.client}</span>}
+                  {item.data.client && ' — '}
+                  {new Date(item.data.date).toLocaleDateString('nb-NO', { year: 'numeric' })}
+                </div>
+                <h3>{item.data.title}</h3>
+                <p>{item.data.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="/portfolio/" class="btn btn-outline">Sjå all portfolio</a>
+        </div>
+      </div>
+    </section>
+  )}
+</BaseLayout>

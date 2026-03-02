@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Kontakt" description="Ta kontakt med Ordbruket for ein uforpliktande prat om språktenester.">
+  <div class="page-header">
+    <div class="container">
+      <h1>Kontakt</h1>
+      <p>La oss jobbe saman — ta kontakt i dag!</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Ta gjerne kontakt</h3>
+          <p>
+            Har du eit prosjekt du treng hjelp med? Ønskjer du ein uforpliktande
+            prat om korleis eg kan hjelpe? Send meg ein e-post, ring, eller fyll
+            ut skjemaet.
+          </p>
+
+          <div style="margin-top: 2rem;">
+            <div class="contact-link">
+              &#9993;&nbsp;&nbsp;
+              <a href="mailto:kati.indrefjord@gmail.com">kati.indrefjord@gmail.com</a>
+            </div>
+            <div class="contact-link">
+              &#9742;&nbsp;&nbsp;
+              <a href="tel:+4792452055">924 52 055</a>
+            </div>
+            <div class="contact-link">
+              &#127968;&nbsp;&nbsp;
+              Bergen, Noreg
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <form class="contact-form" name="contact" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="contact" />
+
+            <label for="name">Namn</label>
+            <input type="text" id="name" name="name" />
+
+            <label for="email">E-post *</label>
+            <input type="email" id="email" name="email" required />
+
+            <label for="subject">Emne *</label>
+            <input type="text" id="subject" name="subject" required />
+
+            <label for="message">Melding *</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit" class="btn">Send melding</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

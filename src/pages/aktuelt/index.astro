@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+const posts = (await getCollection('aktuelt')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const renderedPosts = await Promise.all(
+  posts.map(async (post) => {
+    const { Content } = await render(post);
+    return { ...post, Content };
+  })
+);
+---
+
+<BaseLayout title="Aktuelt" description="Siste nytt frå Ordbruket — oppdateringar, tankar og aktivitetar.">
+  <div class="page-header">
+    <div class="container">
+      <h1>Aktuelt</h1>
+      <p>Oppdateringar og aktivitetar frå Ordbruket</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      {renderedPosts.length > 0 ? (
+        <div class="activity-feed">
+          {renderedPosts.map(({ data, Content }) => (
+            <article class="activity-post">
+              <div class="activity-post-header">
+                <div class="activity-avatar">K</div>
+                <div class="activity-post-meta">
+                  <strong>Kati Foss Indrefjord</strong><br />
+                  {new Date(data.date).toLocaleDateString('nb-NO', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                  })}
+                </div>
+              </div>
+              <div class="activity-post-content">
+                <p><strong>{data.title}</strong></p>
+                <Content />
+                {data.image && (
+                  <img src={data.image} alt={data.title} class="activity-post-image" />
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p style="text-align: center; color: var(--color-text-light);">
+          Innlegg kjem snart.
+        </p>
+      )}
+    </div>
+  </section>
+</BaseLayout>

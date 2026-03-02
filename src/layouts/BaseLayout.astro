@@ -1,0 +1,74 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Ordbruket - Språktjenester i Bergen. Tekstproduksjon, språkvask, oversettelse og kommunikasjon.' } = Astro.props;
+
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/', label: 'Hjem' },
+  { href: '/spraaktjenester/', label: 'Språktjenester' },
+  { href: '/portfolio/', label: 'Portfolio' },
+  { href: '/aktuelt/', label: 'Aktuelt' },
+  { href: '/referanser/', label: 'Referanser' },
+  { href: '/om/', label: 'Om Ordbruket' },
+  { href: '/kontakt/', label: 'Kontakt' },
+];
+---
+
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title} | Ordbruket</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-logo">Ordbruket</a>
+      <button class="mobile-toggle" aria-label="Meny" id="menu-toggle">&#9776;</button>
+      <nav class="main-nav" id="main-nav">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[{ active: currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) }]}
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; {new Date().getFullYear()} Ordbruket &mdash; Kati Foss Indrefjord</p>
+      <p><a href="/kontakt/">Ta kontakt</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle?.addEventListener('click', () => {
+      nav?.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

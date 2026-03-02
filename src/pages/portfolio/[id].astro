@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const portfolio = await getCollection('portfolio');
+  return portfolio.map((item) => ({
+    params: { id: item.id },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+const { Content } = await render(item);
+---
+
+<BaseLayout title={item.data.title} description={item.data.description}>
+  <div class="page-header">
+    <div class="container">
+      <p class="card-meta" style="margin-bottom: 0.5rem;">
+        {item.data.client && <span>{item.data.client}</span>}
+        {item.data.client && ' — '}
+        {new Date(item.data.date).toLocaleDateString('nb-NO', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric',
+        })}
+      </p>
+      <h1>{item.data.title}</h1>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container prose">
+      {item.data.image && (
+        <img src={item.data.image} alt={item.data.title} style="border-radius: 8px; margin-bottom: 2rem;" />
+      )}
+      <Content />
+      {item.data.link && (
+        <p style="margin-top: 2rem;">
+          <a href={item.data.link} target="_blank" rel="noopener noreferrer" class="btn">
+            Les originalen &rarr;
+          </a>
+        </p>
+      )}
+    </div>
+  </section>
+
+  <div style="text-align: center; padding-bottom: 3rem;">
+    <a href="/portfolio/">&larr; Tilbake til portfolio</a>
+  </div>
+</BaseLayout>

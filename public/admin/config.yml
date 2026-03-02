@@ -1,0 +1,43 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# For lokal utvikling, bruk denne i staden:
+# backend:
+#   name: proxy
+#   proxy_url: http://localhost:8081/api/v1
+
+locale: nb_NO
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: portfolio
+    label: "Portfolio"
+    label_singular: "Portfolioinnlegg"
+    folder: src/content/portfolio
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Tittel", name: "title", widget: "string" }
+      - { label: "Beskriving", name: "description", widget: "string" }
+      - { label: "Dato", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false }
+      - { label: "Bilde", name: "image", widget: "image", required: false }
+      - { label: "Oppdragsgivar", name: "client", widget: "string", required: false }
+      - { label: "Lenke til original", name: "link", widget: "string", required: false }
+      - { label: "Stikkord", name: "tags", widget: "list", required: false }
+      - { label: "Innhald", name: "body", widget: "markdown" }
+
+  - name: aktuelt
+    label: "Aktuelt"
+    label_singular: "Innlegg"
+    folder: src/content/aktuelt
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Tittel", name: "title", widget: "string" }
+      - { label: "Dato", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false }
+      - { label: "Bilde", name: "image", widget: "image", required: false }
+      - { label: "Stikkord", name: "tags", widget: "list", required: false }
+      - { label: "Innhald", name: "body", widget: "markdown" }
