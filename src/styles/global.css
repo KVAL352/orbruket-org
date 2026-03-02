@@ -3,15 +3,17 @@
    ======================================== */
 
 :root {
-  --color-primary: #2c3e50;
-  --color-secondary: #7f8c8d;
-  --color-accent: #c0956c;
-  --color-bg: #faf9f7;
-  --color-bg-alt: #f0eeea;
-  --color-text: #333333;
-  --color-text-light: #666666;
+  /* Logo-derived blue palette */
+  --color-primary: #1B4DA0;        /* Deep blue - logo outer band & text */
+  --color-secondary: #6B7F94;      /* Blue-gray - metadata */
+  --color-accent: #4A90D2;         /* Medium blue - matches Squarespace accent hsl(208,65%,58%) */
+  --color-accent-light: #5FB8D6;   /* Teal-cyan - logo inner bands / Squarespace dark accent */
+  --color-bg: #FAFBFD;             /* Very subtle blue-tinted white */
+  --color-bg-alt: #EEF2F7;         /* Light blue-gray sections */
+  --color-text: #2C3440;           /* Dark blue-gray body text */
+  --color-text-light: #5A6A7E;     /* Medium blue-gray secondary text */
   --color-white: #ffffff;
-  --color-border: #e0ddd8;
+  --color-border: #D8DFE8;         /* Light blue-gray borders */
 
   --font-heading: 'Georgia', 'Times New Roman', serif;
   --font-body: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
@@ -95,14 +97,17 @@ h3 { font-size: 1.4rem; }
 }
 
 .site-logo {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  color: var(--color-primary);
-  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+}
+
+.site-logo-img {
+  height: 52px;
+  width: auto;
 }
 
 .site-logo:hover {
-  color: var(--color-accent);
+  opacity: 0.85;
 }
 
 /* Navigation */
@@ -207,7 +212,7 @@ h3 { font-size: 1.4rem; }
 /* Card Grid */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
@@ -307,7 +312,7 @@ h3 { font-size: 1.4rem; }
 /* Services List */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
@@ -345,7 +350,7 @@ h3 { font-size: 1.4rem; }
 /* References / Testimonials */
 .testimonial-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 }
 
@@ -580,6 +585,14 @@ h3 { font-size: 1.4rem; }
   }
 
   .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-grid {
     grid-template-columns: 1fr;
   }
 }
