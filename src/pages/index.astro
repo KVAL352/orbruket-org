@@ -17,8 +17,11 @@ const portfolioItems = (await getCollection('portfolio')).sort(
     <div class="container">
       <h1>Ordbruket</h1>
       <p>
-        Profesjonelle språktjenester i Bergen. Tekstproduksjon, språkvask,
-        oversettelse og kommunikasjonsrådgivning.
+        Trenger du språkvask, tekstproduksjon eller oversettelse? Da er du på rett sted!
+      </p>
+      <p>
+        Har du behov for en sak til magasinet ditt? Trenger du hjelp med teksten din?
+        Synes du det er et ork å lage poster til sosiale medier? Jeg fikser det!
       </p>
       <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
         <a href="/spraaktjenester/" class="btn">Se tjenester</a>
@@ -31,24 +34,24 @@ const portfolioItems = (await getCollection('portfolio')).sort(
   <section class="section">
     <div class="container">
       <div class="section-title">
-        <h2>Hva kan eg hjelpe deg med?</h2>
-        <p>Over 30 års erfaring med tekst og kommunikasjon</p>
+        <h2>Kort sagt en fullblods frilansjournalist og oversetter</h2>
+        <p>Over 30 års erfaring som journalist og rådgiver innen kommunikasjon</p>
       </div>
       <div class="services-grid">
         <div class="service-item">
           <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></div>
           <h3>Tekstproduksjon</h3>
-          <p>Artiklar, reportasjar, intervju, kronikkar og anna tekstproduksjon tilpassa ditt behov.</p>
+          <p>Artikler, reportasjer, portrettintervjuer og mer. Ordbruket leverer det du trenger av tekst.</p>
         </div>
         <div class="service-item">
           <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
-          <h3>Språkvask</h3>
-          <p>Grundig korrekturlesing og språkleg bearbeiding av tekstar på bokmål og nynorsk.</p>
+          <h3>Språkvask og korrektur</h3>
+          <p>Språkvask, redigering, korrektur. Velg mellom 40 graders vask og en kraftfull kokvask på 90 grader.</p>
         </div>
         <div class="service-item">
           <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
           <h3>Oversettelse</h3>
-          <p>Profesjonell omsetting frå engelsk til norsk, tilpassa målgruppe og kanal.</p>
+          <p>Engelsk til norsk, nynorsk til bokmål og omvendt, svensk og dansk til norsk.</p>
         </div>
       </div>
     </div>
@@ -60,7 +63,7 @@ const portfolioItems = (await getCollection('portfolio')).sort(
       <div class="container">
         <div class="section-title">
           <h2>Aktuelt</h2>
-          <p>Siste nytt frå Ordbruket</p>
+          <p>Siste nytt fra Ordbruket</p>
         </div>
         <div class="activity-feed">
           {aktueltPosts.map((post) => (
@@ -86,7 +89,7 @@ const portfolioItems = (await getCollection('portfolio')).sort(
           ))}
         </div>
         <div style="text-align: center; margin-top: 2rem;">
-          <a href="/aktuelt/" class="btn btn-outline">Sjå alle innlegg</a>
+          <a href="/aktuelt/" class="btn btn-outline">Se alle innlegg</a>
         </div>
       </div>
     </section>
@@ -97,8 +100,7 @@ const portfolioItems = (await getCollection('portfolio')).sort(
     <section class="section">
       <div class="container">
         <div class="section-title">
-          <h2>Siste arbeid</h2>
-          <p>Eit utval av nyare oppdrag</p>
+          <h2>Noen få arbeidsprøver</h2>
         </div>
         <div class="card-grid">
           {portfolioItems.map((item) => (
@@ -119,7 +121,7 @@ const portfolioItems = (await getCollection('portfolio')).sort(
           ))}
         </div>
         <div style="text-align: center; margin-top: 2rem;">
-          <a href="/portfolio/" class="btn btn-outline">Sjå all portfolio</a>
+          <a href="/portfolio/" class="btn btn-outline">Se alle arbeidsprøver</a>
         </div>
       </div>
     </section>

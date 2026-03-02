@@ -1,6 +1,6 @@
 ---
 title: "Brenn for lokal mat"
-description: "Artikkel om engasjement for lokal matproduksjon, skrive for Fagskulen Vestland."
+description: "Publisert 12.04.2022 for Fagskulen Vestland."
 date: "2022-04-12"
 client: "Fagskulen Vestland"
 tags:
@@ -8,6 +8,4 @@ tags:
   - mat
 ---
 
-Ein artikkel som løftar fram lokale matprodusentar og deira engasjement for kortreist mat og berekraftig matproduksjon på Vestlandet.
-
-Publisert på fagskulenvestland.no, april 2022.
+Publisert 12.04.2022 for Fagskulen Vestland.

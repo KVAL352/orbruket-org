@@ -1,6 +1,6 @@
 ---
-title: "Årsrapport Kirkens Bymisjon Bergen"
-description: "Skriving og redigering av årsrapport for Kirkens Bymisjon Bergen 2019."
+title: "Årsmelding for Kirkens Bymisjon Bergen"
+description: "Skrevet for Kirkens Bymisjon Bergen for året 2019."
 date: "2020-03-01"
 client: "Kirkens Bymisjon Bergen"
 tags:
@@ -8,4 +8,4 @@ tags:
   - kommunikasjon
 ---
 
-Utarbeiding av årsrapporten for Kirkens Bymisjon Bergen for 2019. Oppdraget omfatta skriving av tekstar, redigering og kvalitetssikring av heile rapporten.
+Årsmelding skrevet for Kirkens Bymisjon Bergen for året 2019.

@@ -1,14 +1,13 @@
 ---
 title: "Tilbake til røttene i Vesterålen"
-description: "Artikkel om restauratør Halvar Ellingsen og Kvitnes gård, publisert i Horeca."
+description: "Æ lika å skill mæ ut, sier Halvar Ellingsen. Det har han greid. På restauranten hans i Sortland, Kvitnes gård, er det lange ventelister for å få en av de 30 sitteplassene."
 date: "2021-06-15"
 client: "Horeca"
-link: "#"
 tags:
   - artikkel
   - mat
 ---
 
-Reportasje om restauratør Halvar Ellingsen som vende tilbake til røtene sine i Vesterålen og etablerte Kvitnes gård. Artikkelen utforskar korleis lokale råvarer og tradisjonar formar moderne norsk matkultur.
+Æ lika å skill mæ ut, sier Halvar Ellingsen. Det har han greid. På restauranten hans i Sortland, Kvitnes gård, er det lange ventelister for å få en av de 30 sitteplassene.
 
 Publisert i Horeca, 2021.
