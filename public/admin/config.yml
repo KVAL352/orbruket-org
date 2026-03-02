@@ -22,7 +22,7 @@ collections:
     fields:
       - { label: "Tittel", name: "title", widget: "string" }
       - { label: "Beskriving", name: "description", widget: "string" }
-      - { label: "Dato", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, picker_utc: true }
+      - { label: "Dato", name: "date", widget: "string", hint: "Skriv dato som ÅÅÅÅ-MM-DD (f.eks. 2022-04-15)" }
       - { label: "Bilde", name: "image", widget: "image", required: false }
       - { label: "Oppdragsgivar", name: "client", widget: "string", required: false }
       - { label: "Lenke til original", name: "link", widget: "string", required: false }
@@ -37,7 +37,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Tittel", name: "title", widget: "string" }
-      - { label: "Dato", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, picker_utc: true }
+      - { label: "Dato", name: "date", widget: "string", hint: "Skriv dato som ÅÅÅÅ-MM-DD (f.eks. 2022-04-15)" }
       - { label: "Bilde", name: "image", widget: "image", required: false }
       - { label: "Stikkord", name: "tags", widget: "list", required: false }
       - { label: "Innhald", name: "body", widget: "markdown" }
