@@ -17,6 +17,14 @@ pnpm-debug.log*
 .env
 .env.production
 
+# MCP config (contains SMTP credentials)
+.mcp.json
+
+# Internal work documents
+PRISFORSLAG.md
+ARBEIDSPLAN.md
+prisforslag.html
+
 # macOS-specific files
 .DS_Store
 
