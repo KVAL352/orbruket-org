@@ -29,6 +29,7 @@ const navLinks = [
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
   <header class="site-header">
@@ -61,19 +62,15 @@ const navLinks = [
     </div>
   </footer>
 
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script>
-    const toggle = document.getElementById('menu-toggle');
-    const nav = document.getElementById('main-nav');
-    toggle?.addEventListener('click', () => {
-      nav?.classList.toggle('open');
+  <script is:inline>
+    document.getElementById('menu-toggle')?.addEventListener('click', function() {
+      document.getElementById('main-nav')?.classList.toggle('open');
     });
 
-    // Redirect etter innlogging via Netlify Identity
     if (window.netlifyIdentity) {
-      window.netlifyIdentity.on('init', user => {
+      window.netlifyIdentity.on('init', function(user) {
         if (!user) {
-          window.netlifyIdentity.on('login', () => {
+          window.netlifyIdentity.on('login', function() {
             document.location.href = '/admin/';
           });
         }
